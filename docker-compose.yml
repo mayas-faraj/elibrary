@@ -1,0 +1,31 @@
+services:
+  frontend:
+    image: node:18-alpine
+    command: sh -c "npm install && npm run dev"
+    working_dir: /app
+    ports:
+      - 3000:3000
+    volumes:
+      - ./frontend:/app
+  backend:
+    image: node:18-alpine
+    command: sh -c "npm install && npm run develop"
+    working_dir: /app
+    ports:
+      - 4000:1337
+    volumes:
+      - ./backend:/app
+    environment:
+      MYSQL_HOST: datastore
+      MYSQL_USER: root
+      MYSQL_PASSWORD: Zxasqw12
+      MYSQL_DB: cms
+  datastore:
+    image: mysql:8.0
+    volumes:
+      - ambassador-database:/usr/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: Zxasqw12
+      MYSQL_DATABASE: cms
+volumes:
+  ambassador-database:

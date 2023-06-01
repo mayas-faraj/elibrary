@@ -1,0 +1,127 @@
+
+@import "_colors";
+@import "_fonts";
+
+.essay-header {
+	text-align: center;
+	padding: 45px 0 45px;
+	background-color: $primary-color;
+	position: sticky;
+	top: 0;
+	z-index: 999999;
+}
+
+.essay-header__menu {
+	font-family: minion-bold;
+	font-size: 22px;
+	line-height: 26px;
+	letter-spacing: 1px;
+	color: $secondary-color;
+}
+
+.essays__title {
+    font-family: 'minion-medium-subh';
+    font-size: 18px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    white-space: pre-line;
+    padding: 40px 20px 0;
+    color: $text-color;
+}
+
+.essays__title::after {
+    content: ' ';
+    width: 85px;
+    display: block;
+    height: 3px;
+    border-bottom: 1px solid $secondary-color;
+    border-top: 1px solid $secondary-color;
+    margin: 20px auto 15px;
+    @media (max-width: 720px) {
+	    width: 100%;
+    }
+}
+
+.essays-list {
+    max-width: 100% !important;
+}
+
+.essays-list::-webkit-scrollbar {
+	display: none;
+}
+
+.essay-seperator {
+	transform: scale(-1);
+	bottom: 0px;
+}
+
+.essay-seperator path {
+	fill: $accent-color;
+}
+
+.essay-wrapper {
+	position: relative;
+	background-color: $accent-color;
+	color: $text-color;
+	letter-spacing: 0px;
+	min-height: 500px;
+	margin-bottom: 40px;
+
+	&:last-child {
+		margin-bottom: 100px;
+	}
+}
+
+.essay {
+	display: flex;
+	flex-direction: column;
+	position: relative;
+	padding-top: 15px;
+	max-width: unset !important;
+	min-height: 500px;
+}
+
+.essay-book__link {
+	width: max-content;
+	z-index: 10;
+	margin: 0 auto;
+}
+
+.essay-book__image {
+	max-height: 60vh;
+	object-fit: contain;
+
+}
+
+.essay::after {
+	content: ' ';
+	background-image: url(/assets/imgs/lines.svg);
+	height: 80px;
+	width: 100%;
+	top: calc(50% - 60px);
+	position: absolute;
+}
+
+.essay-info {
+	font-family: minion-bold;
+	font-size: 24px;
+	letter-spacing: 0;
+	line-height: 24px;
+	text-transform: uppercase;
+	white-space: pre-line;
+	text-align: center;
+	color: #705842;
+	max-width: 965px;
+	margin: 0 auto;
+}
+
+.essay-info__title {
+	white-space: pre-line;
+}
+
+.essay-info__meta,
+.essay-info__comment {
+	font-family: minion-bold-it;
+}
+

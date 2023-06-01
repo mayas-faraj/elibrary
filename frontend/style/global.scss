@@ -1,0 +1,410 @@
+@import "colors";
+@import "fonts";
+
+html {
+	font-size: 20px;
+	scroll-behavior: smooth;
+	scrollbar-width: thin;
+	scrollbar-color: $secondary-color $accent-color;
+}
+
+html::-webkit-scrollbar {
+	width: 4px;
+	background-color: $accent-color;
+}
+
+html::-webkit-scrollbar-thumb {
+	background-color: $secondary-color;
+}
+
+header {
+	position: relative;	
+	background-color: $header-background-color;
+}
+
+
+body {
+	font-family: arial-narrow, arial, sans-serif;
+	letter-spacing: 2.8px;
+	background-color: $primary-color;
+	color: $accent-color;
+	overflow-x: hidden;
+	margin: 0;
+}
+
+#__next {
+	background-color: $accent-color;
+	-webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+}
+
+#__next > * > *  {
+	max-width: 1344px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#library {
+	background-color: $primary-color;
+}
+
+#blog {
+	background-color: #212227;
+  position: relative;
+}
+
+#map {
+	background-color: #f0f0f0;
+	position: relative;
+	overflow-x: clip;
+}
+
+#meetings {
+	background-color: $primary-color;
+
+	@media (max-width: $mobile-width) {
+		display: none;
+	}
+}
+
+#meetings::before {
+	content: ' ';
+	display: block;
+	//background: repeating-linear-gradient(-45deg, transparent 0, $lines-color 1px, $lines-color 2px, transparent 3px, transparent 6px);
+	background-image: url(/assets/imgs/lines.svg);
+	background-size: 120px;
+	width: 100%;
+	height: 250px;
+	position: absolute;
+	z-index: -1;
+	left: 0px;
+}
+
+#events {
+	background-color: #9c9c9c;
+}
+
+#twitter-widget-0 .css-1dbjc4n.r-38sf4c.r-qklmqi.r-1cbz2o1 {
+	display: none;
+}
+
+#special-red-path {
+	fill: red !important;
+}
+
+#travel {
+	margin-bottom: 100px;
+}
+
+.section-seperator {
+	.seperator_svg__minus-sign {
+		font-family: minion;
+		font-size: 30px;
+		color: $primary-color;
+	}
+}
+
+.section-seperator {
+	position: absolute;
+	left: calc(50vw - 165px);
+	z-index: 10;
+	width: 330px;
+
+	#shape {
+		fill: #15161e;
+	}
+
+	/*@media screen and (min-width: $mobile-width) and (max-width: $desktop-width) {
+		left: calc(50vw - 90px);
+	}
+
+	@media screen and (max-width: $mobile-width) {
+		left: calc(50vw - 70px);
+  }*/
+}
+
+.swiper-wrapper {
+	padding-bottom: 45px;
+}
+
+.swiper-pagination-bullet {
+	background-color: #fff !important;
+}
+
+#library {
+	.swiper-slide-duplicate {
+		display: none;
+	}
+}
+
+.swiper-pagination-bullets {
+	bottom: 0 !important;
+}
+
+.swiper-button-next, .swiper-button-prev {
+	color: $secondary-color !important;
+	opacity: .4;
+}
+
+.swiper-button-next:hover, .swiper-button-prev:hover {
+	opacity: 1;
+}
+
+.swiper-pagination-bullet-active {
+	background-color: $secondary-color !important;
+}
+
+.swiper-pagination-bullet {
+	width: 14px !important;
+	height: 14px !important;
+	background-color: #fff;
+}
+
+a {
+	color: #fff;
+	text-decoration: none;
+}
+
+
+a[href="#library"] path {
+    fill: #212227 !important;
+}
+
+.map__image--ambasciatore .word-map-new_svg__country-sd,
+.map__image--ambasciatore .word-map-new_svg__country-ly,
+.map__image--ambasciatore .word-map-new_svg__country-bd,
+.map__image--ambasciatore .word-map-new_svg__country-eg,
+.map__image--console .word-map-new_svg__country-ir,
+.map__image--primo-segratario .word-map-new_svg__united-states,
+.map__image--rappresentante-permanente .word-map-new_svg__country-eg,
+.map__image--rappresentante-permanente .word-map-new_svg__country-sd,
+.map__image--rappresentante-permanente .word-map-new_svg__country-ly,
+.map__image--rappresentante-permanente .word-map-new_svg__country-ss,
+.map__image--rappresentante-permanente .word-map-new_svg__country-so,
+.map__image--rappresentante-permanente .word-map-new_svg__country-sa,
+.map__image--rappresentante-permanente .word-map-new_svg__country-sy,
+.map__image--rappresentante-permanente .word-map-new_svg__country-lb,
+.map__image--rappresentante-permanente .word-map-new_svg__country-jo,
+.map__image--rappresentante-permanente .word-map-new_svg__country-iq,
+.map__image--rappresentante-permanente .word-map-new_svg__country-ps,
+.map__image--rappresentante-permanente .word-map-new_svg__country-il,
+.map__image--rappresentante-permanente .word-map-new_svg__country-lb,
+.map__image--rappresentante-permanente .word-map-new_svg__country-tn,
+.map__image--rappresentante-permanente .word-map-new_svg__country-ma,
+.map__image--rappresentante-permanente .word-map-new_svg__country-dz,
+.map__image--rappresentante-permanente .word-map-new_svg__country-eh,
+.map__image--rappresentante-permanente .word-map-new_svg__country-mr,
+.map__image--rappresentante-permanente .word-map-new_svg__country-ye,
+.map__image--rappresentante-permanente .word-map-new_svg__country-qa,
+.map__image--rappresentante-permanente .word-map-new_svg__oman,
+.map__image--rappresentante-permanente .word-map-new_svg__country-ae,
+.map__image--rappresentante-permanente .word-map-new_svg__country-kw,
+.map__image--vice-ambasciatore .word-map-new_svg__country-so,
+.map__image--direttore-generale .word-map-new_svg__australia,
+.map__image--direttore-generale .word-map-new_svg__russian-federation:not(.kaliningrad),
+.map__image--direttore-generale .word-map-new_svg__papua-new.word-map-new_svg__guinea,
+.map__image--direttore-generale .word-map-new_svg__indonesia,
+.map__image--direttore-generale .word-map-new_svg__philippines,
+.map__image--direttore-generale .word-map-new_svg__oman,
+.map__image--direttore-generale .word-map-new_svg__malaysia,
+.map__image--direttore-generale .word-map-new_svg__azerbaijan,
+.map__image--direttore-generale .word-map-new_svg__turkey:not(.costantibol),
+.map__image--direttore-generale .word-map-new_svg__country-tl,
+.map__image--direttore-generale .word-map-new_svg__country-qa,
+.map__image--direttore-generale .word-map-new_svg__country-lb,
+.map__image--direttore-generale .word-map-new_svg__country-il,
+.map__image--direttore-generale .word-map-new_svg__country-ps,
+.map__image--direttore-generale .word-map-new_svg__country-am,
+.map__image--direttore-generale .word-map-new_svg__country-ge,
+.map__image--direttore-generale .word-map-new_svg__country-bn,
+.map__image--direttore-generale .word-map-new_svg__country-tw,
+.map__image--direttore-generale .word-map-new_svg__country-ae,
+.map__image--direttore-generale .word-map-new_svg__country-kw,
+.map__image--direttore-generale .word-map-new_svg__country-lk,
+.map__image--direttore-generale .word-map-new_svg__country-ar,
+.map__image--direttore-generale .word-map-new_svg__country-mn,
+.map__image--direttore-generale .word-map-new_svg__country-mn,
+.map__image--direttore-generale .word-map-new_svg__country-in,
+.map__image--direttore-generale .word-map-new_svg__country-ie
+.map__image--direttore-generale .word-map-new_svg__country-ir,
+.map__image--direttore-generale .word-map-new_svg__country-iq,
+.map__image--direttore-generale .word-map-new_svg__country-iq,
+.map__image--direttore-generale .word-map-new_svg__country-sa,
+.map__image--direttore-generale .word-map-new_svg__country-kz,
+.map__image--direttore-generale .word-map-new_svg__country-ye,
+.map__image--direttore-generale .word-map-new_svg__country-np,
+.map__image--direttore-generale .word-map-new_svg__country-bd,
+.map__image--direttore-generale .word-map-new_svg__country-uz,
+.map__image--direttore-generale .word-map-new_svg__country-tm,
+.map__image--direttore-generale .word-map-new_svg__country-tj,
+.map__image--direttore-generale .word-map-new_svg__country-kg,
+.map__image--direttore-generale .word-map-new_svg__country-af,
+.map__image--direttore-generale .word-map-new_svg__country-pk,
+.map__image--direttore-generale .word-map-new_svg__country-bt,
+.map__image--direttore-generale .word-map-new_svg__country-mm,
+.map__image--direttore-generale .word-map-new_svg__country-th,
+.map__image--direttore-generale .word-map-new_svg__country-vn,
+.map__image--direttore-generale .word-map-new_svg__country-la,
+.map__image--direttore-generale .word-map-new_svg__country-kh,
+.map__image--direttore-generale .word-map-new_svg__country-kr,
+.map__image--direttore-generale .word-map-new_svg__country-kp,
+.map__image--direttore-generale .word-map-new_svg__country-ir,
+.map__image--direttore-generale .word-map-new_svg__country-sa,
+.map__image--direttore-generale .word-map-new_svg__country-iq,
+.map__image--direttore-generale .word-map-new_svg__country-sy,
+.map__image--direttore-generale .word-map-new_svg__country-lb,
+.map__image--direttore-generale .word-map-new_svg__country-jo,
+.map__image--direttore-generale .word-map-new_svg__japan,
+.map__image--direttore-generale .word-map-new_svg__china {
+	fill: $active-color !important;
+}
+
+.word-map-new_svg__country-sd, .word-map-new_svg__country-ly, .word-map-new_svg__country-bd, .word-map-new_svg__country-eg, .word-map-new_svg__country-ir, .word-map-new_svg__united-states, .word-map-new_svg__country-eg, .word-map-new_svg__country-sd, .word-map-new_svg__country-ly, .word-map-new_svg__country-ss, .word-map-new_svg__country-so, .word-map-new_svg__country-sa, .word-map-new_svg__country-sy, .word-map-new_svg__country-lb, .word-map-new_svg__country-jo, .word-map-new_svg__country-iq, .word-map-new_svg__country-ps, .word-map-new_svg__country-il, .word-map-new_svg__country-lb, .word-map-new_svg__country-tn, .word-map-new_svg__country-ma, .word-map-new_svg__country-dz, .word-map-new_svg__country-eh, .word-map-new_svg__country-mr, .word-map-new_svg__country-ye, .word-map-new_svg__country-qa, .word-map-new_svg__oman, .word-map-new_svg__country-ae, .word-map-new_svg__country-kw, .word-map-new_svg__country-so, .word-map-new_svg__australia, .word-map-new_svg__russian-federation:not(.kaliningrad), .word-map-new_svg__papua-new.word-map-new_svg__guinea, .word-map-new_svg__indonesia, .word-map-new_svg__philippines, .word-map-new_svg__oman, .word-map-new_svg__malaysia, .word-map-new_svg__azerbaijan, .word-map-new_svg__turkey:not(.costantibol), .word-map-new_svg__country-tl, .word-map-new_svg__country-qa, .word-map-new_svg__country-lb, .word-map-new_svg__country-il, .word-map-new_svg__country-ps, .word-map-new_svg__country-am, .word-map-new_svg__country-ge, .word-map-new_svg__country-bn, .word-map-new_svg__country-tw, .word-map-new_svg__country-ae, .word-map-new_svg__country-kw, .word-map-new_svg__country-lk, .word-map-new_svg__country-ar, .word-map-new_svg__country-mn, .word-map-new_svg__country-mn, .word-map-new_svg__country-in, .word-map-new_svg__country-ie .word-map-new_svg__country-ir, .word-map-new_svg__country-iq, .word-map-new_svg__country-iq, .word-map-new_svg__country-sa, .word-map-new_svg__country-kz, .word-map-new_svg__country-ye, .word-map-new_svg__country-np, .word-map-new_svg__country-bd, .word-map-new_svg__country-uz, .word-map-new_svg__country-tm, .word-map-new_svg__country-tj, .word-map-new_svg__country-kg, .word-map-new_svg__country-af, .word-map-new_svg__country-pk, .word-map-new_svg__country-bt, .word-map-new_svg__country-mm, .word-map-new_svg__country-th, .word-map-new_svg__country-vn, .word-map-new_svg__country-la, .word-map-new_svg__country-kh, .word-map-new_svg__country-kr, .word-map-new_svg__country-kp, .word-map-new_svg__country-ir, .word-map-new_svg__country-sa, .word-map-new_svg__country-iq, .word-map-new_svg__country-sy, .word-map-new_svg__country-lb, .word-map-new_svg__country-jo, .word-map-new_svg__japan, .word-map-new_svg__china {
+	fill: $map-general-color !important;
+}
+
+.word-map-new_svg__italy {
+	fill: $map-italy-color !important;
+}
+
+.react-pdf__message {
+	background-color: #e0dcd4;
+	line-height: 60px;
+	text-align: center;
+  max-width: 720px;
+  margin: 54px auto 0;
+}
+
+.react-pdf__Page__annotations {
+	display: none;
+}
+
+.book-browse__pdf--multiple-page .react-pdf__Document {
+	display: flex;
+	flex-wrap: nowrap;
+	justify-content: center;
+}
+
+.book-browse__pdf--multiple-page .react-pdf__Document > * {
+	width: 50%;
+}
+
+.book-browse__pdf--multiple-page .react-pdf__Document:not(.book-browse__pdf-single) .react-pdf__Page:first-child .react-pdf__Page__canvas {
+	margin-right: 0;
+	margin-left: auto;
+}
+
+.book-browse__pdf--multiple-page .react-pdf__Document:not(.book-browse__pdf-single) .react-pdf__Page:last-child .react-pdf__Page__canvas {
+	margin-right: auto;
+	margin-left: 0;
+}
+
+.book-page .react-pdf__Page__canvas,
+.fixed-height {
+	height: 510px !important;
+}
+
+.essays .react-pdf__Page__canvas {
+	height: 100% !important;
+}
+
+.essays .react-pdf__Page__canvas,
+.book-page .react-pdf__Page__canvas {
+	width: fit-content !important;
+	max-height: 60vh;
+	max-width: 100%;
+	margin: 0 auto;
+	object-fit: cover;
+	object-position: top;
+	cursor: zoom-in;
+	padding: 10px;
+	background-color: #fff;
+	box-shadow: 0px 0px 15px #5e5e5e;
+	box-sizing: border-box;
+}
+
+.react-pdf__Page {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.react-pdf__Document {
+    position: relative;
+    z-index: 99;
+}
+
+.react-pdf__Page__textContent {
+	display: none;
+}
+
+
+.pswp img {
+    object-fit: contain;
+    object-position: bottom;
+    padding: 175px;
+}
+
+.pswp__bg {
+    opacity: .92 !important;
+}
+
+.pswp__default-caption, .travel-item__title {
+    font-family: minion-it;
+    letter-spacing: 1.5px;
+    white-space: pre-line;
+    font-size: 17px !important;
+    color: #cc9966 !important;
+}
+
+.react_tinylink_card {
+	height: 400px;
+	max-width: 720px;
+	margin: 0 auto;
+	background: #e0dcd4;
+}
+
+.pswp__default-caption {
+    font-size: 27px !important;
+    top: calc(100vh - 120px);
+    max-width: calc(100vw - 400px);
+    white-space: initial;
+    margin: 0 auto;
+}
+
+.biografia-it-incarichi-1 p,
+.biografia-it-dopo-il-2013-1 p,
+.biografia-it-interessi-personali p,
+.biografia-it-sport p,
+.biografia-it-onorificenze p,
+.biografia-it-conoscenze-linguistiche p,
+.biografia-en-incarichi-1 p,
+.biografia-en-dopo-il-2013-1 p,
+.biografia-en-interessi-personali p,
+.biografia-en-sport p,
+.biografia-en-onorificenze p,
+.biografia-en-conoscenze-linguistiche p,
+.biografia-fr-incarichi-1 p,
+.biografia-fr-dopo-il-2013-1 p,
+.biografia-fr-interessi-personali p,
+.biografia-fr-sport p,
+.biografia-fr-onorificenze p,
+.biografia-fr-conoscenze-linguistiche p {
+	text-align: center;
+}
+
+.biografia-it-incarichi-1 p,
+.biografia-it-conoscenze-linguistiche p,
+.biografia-en-incarichi-1 p,
+.biografia-en-conoscenze-linguistiche p,
+.biografia-fr-incarichi-1 p,
+.biografia-fr-conoscenze-linguistiche p {
+	font-weight: 600;
+}
+
+.hide {
+	display: none;
+}
+
+footer .swiper-slide img {
+	max-width: 180px !important;
+}

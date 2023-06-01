@@ -1,0 +1,41 @@
+@import "colors";
+
+.switcher {
+    display: flex;
+    justify-content: center;
+    margin-top: 44px;
+    box-sizing: border-box;
+    @media (min-width: $mobile-width) {
+        padding-right: 110px;
+        justify-content: flex-end;
+        &+h1 {
+            margin-top: -50px;
+        }
+    }
+}
+
+.switcher-container {
+    margin: 0px 2px;
+}
+
+.switcher-container__flag {
+    border: 1px solid $primary-color;
+    border-bottom: none;
+    border-radius: 5px 5px 0 0;
+    width: 30px;
+    height: 20px;
+    object-fit: cover;
+}
+
+.switcher-container svg {
+    background-color: #201e21;
+    border: 1px solid $primary-color;
+    border-radius: 0 0 5px 5px;
+    border-top: none;
+    height: 20px;
+    display: block;
+    width: 30px;
+    fill: $secondary-color;
+    margin-top: -5px;
+    padding-bottom: 6px;
+}

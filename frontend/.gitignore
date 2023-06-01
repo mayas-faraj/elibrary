@@ -1,0 +1,27 @@
+#other systems
+admin-cp
+build
+
+#swap files
+*.swp
+
+#build files
+.next
+out
+backend
+
+#documentations files
+documentation
+README.md
+
+#recovrable dependencies
+node_modules
+
+#cache files
+nohup.out
+style/.sass-cache
+style/sass/.sass-cache/
+
+#website content
+public/books
+public/images

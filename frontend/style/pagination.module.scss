@@ -1,0 +1,25 @@
+@import "_colors";
+
+.pagination {
+	text-align: center;
+	max-width: 1334px;
+	margin: 20px auto;
+	z-index: 99;
+	box-sizing: border-box;
+	padding-left: 60px;
+}
+
+.pagination__item {
+	display: inline-block;
+	width: 14px;
+	height: 14px;
+	background-color: #44454b;
+	border-radius: 50%;
+	margin-right: 8px;
+	cursor: pointer;
+}
+
+
+.pagination__item--active {
+	background-color: $secondary-color !important;
+}
