@@ -1,0 +1,52 @@
+{
+  "kind": "collectionType",
+  "collectionName": "blogs",
+  "info": {
+    "singularName": "blog",
+    "pluralName": "blogs",
+    "displayName": "Blog"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "slug": {
+      "type": "uid",
+      "targetField": "titolo"
+    },
+    "titolo": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "tipa": {
+      "type": "enumeration",
+      "enum": [
+        "geopolitical",
+        "cultura",
+        "arte"
+      ],
+      "required": true,
+      "default": "geopolitical"
+    },
+    "immagine": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    },
+    "arte": {
+      "type": "text"
+    },
+    "collegamento-web": {
+      "type": "text"
+    },
+    "data": {
+      "type": "date",
+      "required": true
+    }
+  }
+}

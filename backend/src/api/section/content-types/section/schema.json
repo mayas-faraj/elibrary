@@ -1,0 +1,42 @@
+{
+  "kind": "collectionType",
+  "collectionName": "sections",
+  "info": {
+    "singularName": "section",
+    "pluralName": "sections",
+    "displayName": "Sezioni"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "slug": {
+      "type": "uid"
+    },
+    "titolo": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "titolo-secondario": {
+      "type": "string"
+    },
+    "titolo-del-frammento": {
+      "type": "string"
+    },
+    "immagine": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": true
+    },
+    "contenuto": {
+      "type": "text"
+    },
+    "piè-di-pagina": {
+      "type": "text"
+    }
+  }
+}

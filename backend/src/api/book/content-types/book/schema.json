@@ -1,0 +1,91 @@
+{
+  "kind": "collectionType",
+  "collectionName": "books",
+  "info": {
+    "singularName": "book",
+    "pluralName": "books",
+    "displayName": "Libri"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "slug": {
+      "type": "uid",
+      "targetField": "titolo"
+    },
+    "titolo": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "immagine": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    },
+    "breve": {
+      "type": "text"
+    },
+    "contenuto": {
+      "type": "text"
+    },
+    "anno": {
+      "type": "integer"
+    },
+    "mese": {
+      "type": "integer"
+    },
+    "lingua": {
+      "type": "enumeration",
+      "enum": [
+        "Italiano",
+        "Inglese",
+        "Arabo"
+      ],
+      "required": true,
+      "default": "Italiano"
+    },
+    "autore": {
+      "type": "text"
+    },
+    "città": {
+      "type": "text"
+    },
+    "serie": {
+      "type": "text"
+    },
+    "formato": {
+      "type": "text"
+    },
+    "isbn": {
+      "type": "text"
+    },
+    "commento": {
+      "type": "text"
+    },
+    "file": {
+      "allowedTypes": [
+        "files"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "contano-le-pagine": {
+      "type": "integer"
+    },
+    "intestazione": {
+      "type": "text"
+    },
+    "acquistare": {
+      "type": "text"
+    },
+    "ordine": {
+      "type": "integer"
+    }
+  }
+}

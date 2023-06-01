@@ -1,0 +1,50 @@
+{
+  "kind": "collectionType",
+  "collectionName": "articles",
+  "info": {
+    "singularName": "article",
+    "pluralName": "articles",
+    "displayName": "Letture"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "slug": {
+      "type": "uid",
+      "targetField": "titolo"
+    },
+    "titolo": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "tipa": {
+      "type": "enumeration",
+      "enum": [
+        "ricordi",
+        "medio oriente",
+        "l'episodio",
+        "momenti",
+        "flash-back"
+      ],
+      "required": true,
+      "default": "ricordi"
+    },
+    "breve": {
+      "type": "text"
+    },
+    "immagine": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    },
+    "contenuto": {
+      "type": "text"
+    }
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "kind": "collectionType",
+  "collectionName": "essays",
+  "info": {
+    "singularName": "essay",
+    "pluralName": "essays",
+    "displayName": "Saggi"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "slug": {
+      "type": "uid",
+      "targetField": "titolo"
+    },
+    "titolo": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "titolo-primario": {
+      "type": "string"
+    },
+    "immagine": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    },
+    "breve": {
+      "type": "text"
+    },
+    "anno": {
+      "type": "integer",
+      "default": 2023,
+      "required": true
+    },
+    "mese": {
+      "type": "integer"
+    },
+    "giorno": {
+      "type": "integer"
+    },
+    "città": {
+      "type": "text"
+    },
+    "serie": {
+      "type": "text"
+    },
+    "libro": {
+      "type": "text"
+    },
+    "commento": {
+      "type": "text"
+    },
+    "file": {
+      "allowedTypes": [
+        "files"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "acquistare": {
+      "type": "text"
+    }
+  }
+}
