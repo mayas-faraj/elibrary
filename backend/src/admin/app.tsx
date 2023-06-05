@@ -29,7 +29,7 @@ export default {
                 neutral0: '#151620fc',
                 neutral100: '#e0dcd4a0',
                 neutral1000: '#e0dcd4',
-                neutral150: '#e0dcd4a1',
+                neutral150: '#918e8aa1',
                 neutral200: '#e0dcd4a2',
                 neutral300: '#151620fc',
                 neutral400: '#e0dcd4a4',
@@ -46,7 +46,7 @@ export default {
                 secondary100: '#0c0c0da0',
                 secondary200: '#0c0c0da1',
                 secondary500: '#0c0c0da2',
-                secondary600: '#0c0c0da3',
+                secondary600: '#e0dcd4a3',
                 secondary700: '#0c0c0da4',
             }
         },
