@@ -25,8 +25,7 @@
         "images"
       ],
       "type": "media",
-      "multiple": false,
-      "required": true
+      "multiple": false
     },
     "breve": {
       "type": "text"
@@ -51,19 +50,19 @@
       "default": "Italiano"
     },
     "autore": {
-      "type": "text"
+      "type": "string"
     },
-    "città": {
-      "type": "text"
+    "citta": {
+      "type": "string"
     },
     "serie": {
-      "type": "text"
+      "type": "string"
     },
     "formato": {
-      "type": "text"
+      "type": "string"
     },
     "isbn": {
-      "type": "text"
+      "type": "string"
     },
     "commento": {
       "type": "text"
@@ -75,14 +74,14 @@
       "type": "media",
       "multiple": false
     },
-    "contano-le-pagine": {
+    "contano_le_pagine": {
       "type": "integer"
     },
     "intestazione": {
       "type": "text"
     },
     "acquistare": {
-      "type": "text"
+      "type": "string"
     },
     "ordine": {
       "type": "integer"

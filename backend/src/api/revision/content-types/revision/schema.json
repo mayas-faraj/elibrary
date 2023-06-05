@@ -19,7 +19,8 @@
     },
     "file": {
       "allowedTypes": [
-        "files"
+        "files",
+        "images"
       ],
       "type": "media",
       "multiple": false,

@@ -19,10 +19,10 @@
       "required": true,
       "unique": true
     },
-    "titolo-secondario": {
+    "titolo_secondario": {
       "type": "string"
     },
-    "titolo-del-frammento": {
+    "titolo_del_frammento": {
       "type": "string"
     },
     "immagine": {
@@ -35,7 +35,7 @@
     "contenuto": {
       "type": "text"
     },
-    "piè-di-pagina": {
+    "pie_di_pagina": {
       "type": "text"
     }
   }

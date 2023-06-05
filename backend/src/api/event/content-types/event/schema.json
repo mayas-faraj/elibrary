@@ -7,12 +7,12 @@
     "displayName": "Evento"
   },
   "options": {
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "pluginOptions": {},
   "attributes": {
     "titolo": {
-      "type": "string",
+      "type": "text",
       "required": true    
     },
     "anno": {

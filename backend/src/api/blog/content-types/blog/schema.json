@@ -11,10 +11,6 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "slug": {
-      "type": "uid",
-      "targetField": "titolo"
-    },
     "titolo": {
       "type": "string",
       "required": true,
@@ -39,10 +35,10 @@
       "required": true
     },
     "arte": {
-      "type": "text"
+      "type": "string"
     },
-    "collegamento-web": {
-      "type": "text"
+    "collegamentoweb": {
+      "type": "string"
     },
     "data": {
       "type": "date",

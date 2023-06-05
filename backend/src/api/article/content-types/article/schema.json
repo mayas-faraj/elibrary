@@ -33,7 +33,7 @@
       "default": "ricordi"
     },
     "breve": {
-      "type": "text"
+      "type": "string"
     },
     "immagine": {
       "allowedTypes": [

@@ -16,12 +16,12 @@
       "targetField": "titolo"
     },
     "titolo": {
-      "type": "string",
+      "type": "text",
       "required": true,
       "unique": true
     },
-    "titolo-primario": {
-      "type": "string"
+    "titolo_primario": {
+      "type": "text"
     },
     "immagine": {
       "allowedTypes": [
@@ -45,14 +45,14 @@
     "giorno": {
       "type": "integer"
     },
-    "città": {
-      "type": "text"
+    "citta": {
+      "type": "string"
     },
     "serie": {
-      "type": "text"
+      "type": "string"
     },
-    "libro": {
-      "type": "text"
+    "nome_del_libro": {
+      "type": "string"
     },
     "commento": {
       "type": "text"
@@ -65,7 +65,7 @@
       "multiple": false
     },
     "acquistare": {
-      "type": "text"
+      "type": "string"
     }
   }
 }
