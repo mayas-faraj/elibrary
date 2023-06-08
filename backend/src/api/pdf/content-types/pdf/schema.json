@@ -1,0 +1,39 @@
+{
+  "kind": "singleType",
+  "collectionName": "pdfs",
+  "info": {
+    "singularName": "pdf",
+    "pluralName": "pdfs",
+    "displayName": "Biografia"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "italiana": {
+      "allowedTypes": [
+        "files"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    },
+    "inglese": {
+      "allowedTypes": [
+        "files"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    },
+    "francese": {
+      "allowedTypes": [
+        "files"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    }
+  }
+}
