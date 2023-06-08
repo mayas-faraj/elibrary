@@ -78,6 +78,7 @@ header {
 /* line 34, ../../../style/sass/Home.scss */
 .top-header,
 .top-header__overlay {
+  position: -webkit-sticky;
   position: sticky;
   top: 0;
   width: 100%;

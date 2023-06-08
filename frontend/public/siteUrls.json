@@ -1,7 +1,5 @@
 {
-	"backendApiUrl": "https://laravel.ae/claudio-pacifico/backend/api.php",
-	"imagesUrl": "https://claudiopacificoambassador.com/images",
-	"booksUrl": "https://claudiopacificoambassador.com/books",
-	"siteUrl": "https://claudiopacificoambassador.com"
+	"backendApiUrl": "http://127.0.0.1:1337/graphql",
+	"siteUrl": "http://127.0.0.1:1337"
 }
 
