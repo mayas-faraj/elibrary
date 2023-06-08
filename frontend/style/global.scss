@@ -59,7 +59,7 @@ body {
 	overflow-x: clip;
 }
 
-#meetings {
+#articles {
 	background-color: $primary-color;
 
 	@media (max-width: $mobile-width) {
@@ -67,7 +67,7 @@ body {
 	}
 }
 
-#meetings::before {
+#articles::before {
 	content: ' ';
 	display: block;
 	//background: repeating-linear-gradient(-45deg, transparent 0, $lines-color 1px, $lines-color 2px, transparent 3px, transparent 6px);

@@ -21,6 +21,7 @@
 
 .top-header,
 .top-header__overlay {
+	position: -webkit-sticky;
 	position: sticky;
 	top: 0;
 	width: 100%;
@@ -198,9 +199,6 @@
 }
 
 @media screen and (min-width: $mobile-width) {
-	.header {
-	}
-
 	.header-menu {
 		position: absolute;
 		top: 0;
@@ -225,7 +223,7 @@
 	}	
 }
 
-.meetings-seperator text,
+.articles-seperator text,
 .blog-seperator text,
 .library-seperator text,
 .map-seperator text,
