@@ -29,7 +29,8 @@
     "libri": {
       "type": "relation",
       "relation": "oneToOne",
-      "target": "api::book.book"
+      "target": "api::book.book",
+      "required": true
     }
   }
 }

@@ -16,7 +16,7 @@
       "targetField": "titolo"
     },
     "titolo": {
-      "type": "string",
+      "type": "text",
       "required": true,
       "unique": true
     },

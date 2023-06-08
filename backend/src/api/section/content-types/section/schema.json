@@ -15,9 +15,7 @@
       "type": "uid"
     },
     "titolo": {
-      "type": "string",
-      "required": true,
-      "unique": true
+      "type": "string"
     },
     "titolo_secondario": {
       "type": "string"
