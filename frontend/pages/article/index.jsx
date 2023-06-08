@@ -1,23 +1,14 @@
 import React from 'react';
 import Link from 'next/link';
 import Head from 'next/head';
-import axios from 'axios';
-import SettingContext from '/components/setting-context';
+import siteUrls from '/public/siteUrls.json';
 import Seperator from "/public/assets/imgs/seperator.svg";
 import headerImage from '/public/assets/imgs/header-articles.png';
 import Footer from "/components/footer";
+import { articlesData } from "../../libs/fetch-data";
 import style from '/style/articles.module.scss';
 
-export default function Articles() {
-	const [articles, setArticles]=React.useState([]);
-	const context=React.useContext(SettingContext);
-
-	React.useEffect(()=>{
-		axios.post(context.backendApiUrl, {"operation": "read-all-articles"})
-		.then(result=>setArticles(result.data))
-		.catch(err=>console.error(err));
-	}, []);
-
+const ArticlesPage = ({ articles }) => {
 	return (
 		<React.Fragment>
 			<Head>
@@ -25,7 +16,7 @@ export default function Articles() {
 				<meta property="og:title" content="Claudio Pacifico - Letture" />
 				<meta name="description" content="Episodi, ricordi e analisi,scritti dall’ambasciatore d’italia, claudio pacifico"/>
 				<meta property="og:description" content="Episodi, ricordi e analisi,scritti dall’ambasciatore d’italia, claudio pacifico"/>
-				<meta property="og:image" content={context.siteUrl + "/assets/imgs/header-articles.jpg"} />
+				<meta property="og:image" content={siteUrls.siteUrl + "/assets/imgs/header-articles.jpg"} />
 			</Head>
 			<header className={style["articles-header"]}>
 				<div className={style["articles-header__image-container"]}>
@@ -45,23 +36,34 @@ export default function Articles() {
 				<div className={style["articles-container"]}>
 					<div className={style["articles"]}>
 					{
-						articles.map(article=>(
-							<div key={article.slug} className={style["articles-item"]}>
-								<Link href={"/article/"+article.slug}>
-									<a><img className={style["articles-item__image"]} src={context.imagesUrl+"/"+article.image} alt={article.excerpt}/></a>
+						articles != null && articles.map(article=>(
+							<div key={article.attributes.slug} className={style["articles-item"]}>
+								<Link href={"/article/"+article.attributes.slug}>
+									<a><img className={style["articles-item__image"]} src={siteUrls.siteUrl + article.attributes?.immagine?.data?.attributes?.url} alt={article.attributes.breve}/></a>
 								</Link>
-								<strong className={style["articles-item__type"]}>{article.type}</strong>
-								<Link href={"/article/"+article.slug}>
-									<a className={style["articles-item__name"]}>{article.title + "\n..."}</a>
+								<strong className={style["articles-item__type"]}>{article.attributes.tipe}</strong>
+								<Link href={"/article/"+article.attributes.slug}>
+									<a className={style["articles-item__name"]}>{article.attributes.titolo + "\n..."}</a>
 								</Link>
 							</div>
 						))
-					}
+					} 
 					</div>
 				</div>
 			</div>
 			<Footer/>
 		</React.Fragment>
 	);
-}
+};
+
+export const getStaticProps = async () => {
+	const result = await articlesData();
+	return {
+		props: {
+			articles: result.data?.articles?.data
+		}
+	}
+};
+
+export default ArticlesPage;
 

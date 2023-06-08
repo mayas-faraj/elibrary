@@ -1,57 +1,46 @@
-import React, {Fragment} from 'react';
-import Dialog from '@mui/material/Dialog';
-import DialogContent from '@mui/material/DialogContent';
+import React, { Fragment } from 'react';
 import Link from 'next/link';
 import Head from 'next/head';
-import {useRouter} from 'next/router';
-import axios from 'axios';
-import {pdfjs, Document, Page} from 'react-pdf';
-import Pagination from '/components/pagination';
+import { useRouter } from 'next/router';
+import { pdfjs, Document, Page } from 'react-pdf';
 import Glimmer from '/components/glimmer';
 import Footer from '/components/footer';
-import SettingContext from '/components/setting-context';
+import { essaysData, essaysSlugData } from '../../libs/fetch-data';
+import siteUrls from '/public/siteUrls.json';
 import Seperator from "/public/assets/imgs/seperator.svg";
 import style from '/style/essay.module.scss';
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`
 
-export default props=>{
+const EssayPage = ({ essays }) => {
 	const router=useRouter();
 	const slug=router.query.essay;
-	const essays=props.essays;
+	const listRef = React.useRef();
+	const itemRef = React.useRef();
 
-	const context=React.useContext(SettingContext);
-	const [bookPagesCount, setBookPagesCount]=React.useState([]);
-	const [bookModal, setBookModal]=React.useState(false);
-	const [pageOffset, setPageOffset]=React.useState(0);
-
-	const listRef=React.useRef();
-	const itemRef=React.useRef();
-
-	React.useEffect(()=>{
-		if(listRef.current && itemRef.current) listRef.current.scrollTop=itemRef.current.offsetTop;
-
+	React.useEffect(() => {
+		if (listRef.current && itemRef.current) listRef.current.scrollTop = itemRef.current.offsetTop;
 	}, []);
 
-	const bookLoadEventHandler=({numPages}) => setBookPagesCount(numPages);
-	if(essays)
-		for(let i=0; i<essays.length; i++) {
-			if(essays[i].slug && essays[i].slug===slug) {
-				const currentEssay=essays.splice(i, 1);
+	if (essays)
+		for (let i = 0; i < essays.length; i++) {
+			if (essays[i].attributes.slug && essays[i].attributes.slug === slug) {
+				const currentEssay = essays.splice(i, 1);
 				essays.unshift(currentEssay[0]);
 			}
 		}
+
 	return (
 		<Fragment>
 			{
-				essays!=null && (
-				<Head>
-					<title>{essays[0].title + " | Claudio Pacifico Saggi"}</title>
-					<meta property="og:title" content={essays[0].title + " | Claudio Pacifico Saggi"}/>
-					<meta name="description" content={essays[0].book_name}/>
-					<meta property="og:description" content={essays[0].book_name}/>
-					{essays[0].image && <meta property="og:image" content={context.imagesUrl+"/"+essays[0].image} />}
-				</Head>)
+				(essays != null && essays.length > 0) && (
+					<Head>
+						<title>{essays[0].attributes.titolo + " | Claudio Pacifico Saggi"}</title>
+						<meta property="og:title" content={essays[0].attributes.titolo + " | Claudio Pacifico Saggi"} />
+						<meta name="description" content={essays[0].attributes.breve} />
+						<meta property="og:description" content={essays[0].attributes.breve} />
+						{essays[0].attributes?.immagine?.data?.attributes?.url != null && <meta property="og:image" content={siteUrls.siteUrl + essays[0].attributes.immagine.data.attributes.url} />}
+					</Head>)
 			}
 			<header className={style["essay-header"]}>
 				<Link href="/#saggi">
@@ -61,76 +50,63 @@ export default props=>{
 					</a>
 				</Link>
 			</header>
-			{ !essays && <Glimmer/> }
+			{essays == null && <Glimmer />}
 			<div className="essays">
 				<div className={style["essays__title"]}>
-				L’Ambasciatore Pacifico è altresì impegnato<br/>
-				in un’ampia attività di saggista.  articoli, saggi,<br/>
-				master universitari e interviste.
+					L’Ambasciatore Pacifico è altresì impegnato<br />
+					in un’ampia attività di saggista.  articoli, saggi,<br />
+					master universitari e interviste.
 				</div>
 				<div className={style["essays-list"]}>
-				{
-					essays && essays.map(essay=>(
-						<div key={essay.slug} className={style["essay-wrapper"]}>
-							<div className={style["essay"]}>
-							{
-								(essay.file && essay.file.lastIndexOf("pdf")>0) && (
-									<a className={style["essay-book__link"]} href={essay.file} target="_blank">
-										<Document file={essay.file} onLoadSuccess={bookLoadEventHandler} loading="Caricamento della pagina in corso...">
-											<Page width={3000} pageNumber={1} />
-										</Document>
-									</a>)
-							}
-							{
-								(essay.file && (essay.file.lastIndexOf("jpg")>0 || essay.file.lastIndexOf("png")>0)) && (
-									<a className={style["essay-book__link"]} href={essay.link?essay.link:"#"} target="_blank">
-										<img className={style["essay-book__image"]} src={essay.file}/>
-									</a>)
-							}
+					{
+						essays != null && essays.map(essay => (
+							<div key={essay.attributes.slug} className={style["essay-wrapper"]}>
+								<div className={style["essay"]}>
+									{
+										essay.attributes?.file?.data?.attributes?.url != null && (
+											<a className={style["essay-book__link"]} href={siteUrls.siteUrl + essay.attributes.file.data.attributes.url} target="_blank">
+												<Document file={siteUrls.siteUrl + essay.attributes.file.data.attributes.url} loading="Caricamento della pagina in corso...">
+													<Page width={3000} pageNumber={1} />
+												</Document>
+											</a>)
+									}
+									{
+										essay.attributes?.file?.data?.attributes?.url == null && essay.attributes?.immagine?.data?.attributes?.url != null && (
+											<a className={style["essay-book__link"]} href={essay.attributes?.file?.data?.attributes?.url ? siteUrls.siteUrl + essay.attributes.file.data.attributes.url : "#"} target="_blank">
+												<img className={style["essay-book__image"]} src={siteUrls.siteUrl + essay.attributes.immagine.data.attributes.url} />
+											</a>)
+									}
+								</div>
+								<p className={style["essay-info"]}>
+									<span className={style["essay-info__comment"]}>{essay.attributes.commento}</span><br />
+									<span className={style["essay-info__title"]}>{essay.attributes.titolo_primario}</span>
+									<span className={style["essay-info__meta"]}>{essay.attributes.nome_del_libro ? essay.attributes.nome_del_libro?.replaceAll("\\n", "\n") : ""}{essay.attributes.citta ? essay.attributes.citta + ", " : ""}{essay.attributes.giorno != null && essay.attributes.giorno} {(essay.attributes.mese != null && essay.attributes.mese > 0) && ["Gennaio", "febbraio", "Marzo", "aprile", "Maggio", "Giugno", "Luglio", "agosto", "settembre", "ottobre", "novembre", "Dicembre"][essay.attributes.mese - 1] + " "}{essay.attributes.anno}</span>
+								</p>
 							</div>
-							<p className={style["essay-info"]}>
-								<span className={style["essay-info__comment"]}>{essay.comment}</span><br/>
-								<span className={style["essay-info__title"]}>{essay.primary_title}</span>
-								<span className={style["essay-info__meta"]}>{essay.book_name?essay.book_name:""}{essay.city?essay.city+", ":""}{essay.day!=null && essay.day} {(essay.month!=null && essay.month>0) && [ "Gennaio", "febbraio", "Marzo", "aprile", "Maggio", "Giugno", "Luglio", "agosto", "settembre", "ottobre", "novembre", "Dicembre" ][essay.month-1]+" "}{essay.year}</span>
-							</p>
-						</div>
-				))}
+						))}
 				</div>
 			</div>
-			<Footer/>
+			<Footer />
 		</Fragment>
 	);
 }
 
-export async function getStaticPaths() {
-	const siteUrls=require("/public/siteUrls"); 
-	const data=await fetch(siteUrls.backendApiUrl, {
-		"method": "post", "headers": {
-			"Content-Type": "application/json"
-		}, 
-		"body": JSON.stringify({"operation": "read-essays"})
-	});
-	const essays=await data.json();
+export const getStaticPaths = async () => {
+	const result = await essaysSlugData();
 	return {
-		"fallback": "blocking",
-		"paths": essays.map(essay=>({"params": {"essay": essay.slug}}))
+		fallback: "blocking",
+		paths: result.data.essays.data.map(essay => ({ params: { essay: essay.attributes.slug } }))
 	};
 }
 
-export async function getStaticProps(context) {
-	const siteUrls=require("/public/siteUrls"); 
-	const essaysData=await fetch(siteUrls.backendApiUrl, {
-		"method": "post", "headers": {
-			"Content-Type": "application/json"
-		}, 
-		"body": JSON.stringify({"operation": "read-essays"})
-	});
-	const essays=await essaysData.json();
-
+export const getStaticProps = async () => {
+	const result = await essaysData();
 	return {
-		"props": {
-			"essays": essays.reverse()
+		props: {
+			essays: result.data.essays.data.reverse()
 		}
 	};
-}
+};
+
+export default EssayPage;
 

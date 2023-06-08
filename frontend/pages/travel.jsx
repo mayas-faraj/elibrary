@@ -2,7 +2,6 @@ import React, {Fragment} from 'react';
 import Link from 'next/link';
 import Head from 'next/head';
 import { Gallery, Item } from 'react-photoswipe-gallery'
-import Glimmer from '/components/glimmer';
 import Seperator from '/public/assets/imgs/seperator.svg';
 import Footer from '/components/footer';
 import 'photoswipe/dist/photoswipe.css'

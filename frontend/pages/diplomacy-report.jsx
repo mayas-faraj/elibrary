@@ -3,19 +3,18 @@ import Link from "next/link";
 import Head from "next/head";
 import axios from "axios";
 import { Gallery, Item } from "react-photoswipe-gallery";
-import SettingContext from "/components/setting-context";
 import Glimmer from "/components/glimmer";
 import Seperator from "/public/assets/imgs/seperator.svg";
 import Footer from "/components/footer";
 import "photoswipe/dist/photoswipe.css";
 import siteUrls from '/public/siteUrls.json';
 import style from "/style/diplomaticreport.module.scss";
+import { countriesSectionData } from "../libs/fetch-data";
 
-export default function DiplomaticReport({countries}) {
+const DiplomaticReport = ({countries}) => {
 
 	const [fixed, setFixed]=React.useState(false);
 	const [mounted, setMounted]=React.useState(false);
-	const context=React.useContext(SettingContext);
 
 	React.useEffect(()=>{
 		window.addEventListener("scroll", contentScrollHandler, {passive: true});
@@ -56,36 +55,36 @@ export default function DiplomaticReport({countries}) {
 			</div>
 			<div className={style["diplomatic-report-countries"] + " " + (fixed?style["fixed"]:"")}>
 				<ul className={style["diplomatic-report-countries-list"]}>
-					{countries.map((country, index)=><li key={country.slug} className={style["diplomatic-report-countries__item"]}><a href={index>0?"#"+country.slug:"#__next"}>{"#"+country.fragment_title}</a></li>)}
+					{countries.map((country, index)=><li key={country.attributes.slug} className={style["diplomatic-report-countries__item"]}><a href={index>0?"#"+country.attributes.slug:"#__next"}>{"#"+country.attributes.titolo_del_frammento}</a></li>)}
 				</ul>
 			</div>
 			<div className={style["diplomatic-report-content"]}>
 			{ countries.map(country=>(
-				<Fragment key={country.slug}>
-					<div id={country.slug} className={style["diplomatic-report-container"]}>
-						<h2 className={style["report__title"]}><span className={style["report__pretitle"]}>in </span>{country.title}</h2>
-						<div className={style["report__subtitle"]}>{country.sub_title}</div>
-						<h3 className={style["report__header-text"]}>{country.header_text}</h3>
-						<p className={style["diplomatic-report__content"]}>{country.content}</p>
-						<div dangerouslySetInnerHTML={{__html: country.footer_text}} className={style["report__tail-text"]}/>
+				<Fragment key={country.attributes.slug}>
+					<div id={country.attributes.slug} className={style["diplomatic-report-container"]}>
+						<h2 className={style["report__title"]}><span className={style["report__pretitle"]}>in </span>{country.attributes.titolo}</h2>
+						<div className={style["report__subtitle"]}>{country.attributes.titolo_secondario}</div>
+						<h3 className={style["report__header-text"]}></h3>
+						<p className={style["diplomatic-report__content"]}>{country.attributes.contenuto}</p>
+						<div dangerouslySetInnerHTML={{__html: country.attributes.pie_di_pagina}} className={style["report__tail-text"]}/>
 					</div>
 					<div className={style["diplomatic-report-gallery"]}>
 						<Gallery withCaption options={{"showHideAnimationType": "none"}}>
 						{
-							country.images!=null && country.images.map(image=>(
-							<div key={image.image_src} className={style["diplomatic-report-item"]}>
+							country.attributes.immagine?.data != null && country.attributes.immagine.data.map(image=>(
+							<div key={image.attributes.url} className={style["diplomatic-report-item"]}>
 								<Item
-									caption={image.title}
-									original={image.image_src}
-									thumbnail={image.image_src}
+									caption={image.attributes.caption}
+									original={siteUrls.siteUrl + image.attributes.url}
+									thumbnail={siteUrls.siteUrl + image.attributes.url}
 									width={"100vw"}
 									height={"100vh"}
 								>
 								{
-									({ref, open})=><img ref={ref} className={style["diplomatic-report-item__image"]} onClick={open} src={image.image_src.replace("/"+country.title.toLowerCase(), "/thumbnails/"+country.title.toLowerCase())}/> 
+									({ref, open})=><img ref={ref} className={style["diplomatic-report-item__image"]} onClick={open} src={siteUrls.siteUrl + image.attributes.url.replace("/"+country.attributes.titolo.toLowerCase(), "/thumbnails/"+country.attributes.titolo.toLowerCase())}/> 
 								}
 								</Item>
-								<strong className={style["diplomatic-report-item__title"]}>{image.title}</strong>
+								<strong className={style["diplomatic-report-item__title"]}>{image.attributes.caption}</strong>
 							</div>
 						))}
 						</Gallery>
@@ -98,20 +97,14 @@ export default function DiplomaticReport({countries}) {
 	);
 }
 
-export async function getStaticProps(context) {
-	const siteUrls=require("/public/siteUrls"); 
-	const sectionData=await fetch(siteUrls.backendApiUrl, {
-		"method": "post", "headers": {
-			"Content-Type": "application/json"
-		}, 
-		"body": JSON.stringify({"operation": "read-diplomacy-report-section"})
-	});
-	const sections=await sectionData.json();
+export const getStaticProps = async () => {
+	const countries = await countriesSectionData();
 
 	return {
-		"props": {
-			"countries": sections 
+		props: {
+			countries: countries.data.sections.data 
 		}
 	};
-}
+};
 
+export default DiplomaticReport;

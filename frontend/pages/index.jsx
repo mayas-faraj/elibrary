@@ -1,7 +1,7 @@
 import React, {Fragment} from "react";
 import Link from 'next/link';
 import Head from 'next/head';
-import Meetings from "/components/meetings";
+import Articles from "/components/articles";
 import Blog from "/components/blog";
 import Publications from "/components/publications";
 import Map from "/components/map";
@@ -14,13 +14,13 @@ import Menu from "/public/assets/imgs/menu.svg";
 import ambassadorImg from '/public/assets/imgs/ambassador.png';
 import siteUrls from '/public/siteUrls.json';
 import style from '/style/home.module.scss';
+import { homeData } from '../libs/fetch-data';
 
 export default function Home(props) {
 	const [stickyHeader, setStickyHeader]=React.useState(false);
 	const [activeCategoryIndex, setActiveCategoryIndex]=React.useState(0);
 	const [stickyMenuVisible, setStickyMenuVisible]=React.useState(false);
 
-	const libraryRef=React.useRef();
 	const lettureRef=React.useRef();
 	const biografiaRef=React.useRef();
 	const diplomacyRef=React.useRef();
@@ -40,11 +40,11 @@ export default function Home(props) {
 	];
 
 	const SECTIONS=[
-		{"id": "meetings", "element": <Meetings />},
-		{"id": "blog", "element": <Blog />},
-		{"id": "library", "element": <Publications setRef={libraryRef} activeCategoryIndex={activeCategoryIndex}/>},
+		{"id": "articles", "element": <Articles articles={props.articles} />},
+		{"id": "blog", "element": <Blog blogs={props.blogs} />},
+		{"id": "library", "element": <Publications books={props.books} essays={props.essays} activeCategoryIndex={activeCategoryIndex}/>},
 		{"id": "map", "element": <Map />},
-		{"id": "events", "element": <Events />},
+		{"id": "events", "element": <Events events={props.events} />},
 		{"id": "contact", "element": <Contact />},
 		{"id": "viaggi", "element": <Travel />},
 		{"id": "biografia", "element": <Biografia />},
@@ -75,12 +75,7 @@ export default function Home(props) {
 		if(window.location.hash==="#diplomacy") diplomacyRef.current.scrollIntoView();
 		if(window.location.hash==="#travel") travelRef.current.scrollIntoView();
     */
-		if(window.location.hash==="#saggi") {
-			setActiveCategoryIndex(1);
-			libraryRef.current.scrollIntoView();
-		}
 	}, []);
-
 
 	return (
 		<Fragment>
@@ -159,4 +154,17 @@ function TravelSection(props) {
 			<Link href="/travel"><a className={style["navigator__link"]} >viaggi<br/>e spedizioni</a></Link>
 		</div>
 	);
+}
+
+export const getStaticProps = async () => {
+	const result = await homeData();
+	return {
+		props: {
+			articles: result.data?.articles?.data,
+			blogs: result.data?.blogs?.data,
+			books: result.data?.books?.data?.reverse(),
+			essays: result.data?.essays?.data,
+			events: result.data?.events?.data,
+		}
+	}
 }
