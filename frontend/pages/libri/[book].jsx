@@ -104,17 +104,17 @@ const BookPage = ({ book, books, revisions }) => {
 										<ShareIcon className={style["book-info-share__icon"]} />
 										<ul className={style["book-info-share-list"]}>
 											<li className={style["book-info-share-item"]}>
-												<a href={`https://www.linkedin.com/sharing/share-offsite/?url=${siteUrls.siteUrl}/libri/${book.attributes.slug}`} target="_blank" rel="nofollow">
+												<a href={`https://www.linkedin.com/sharing/share-offsite/?url=https://claudiopacificoambassador.com/libri/${book.attributes.slug}`} target="_blank" rel="nofollow">
 													<LinkedinButtonIcon />
 												</a>
 											</li>
 											<li className={style["book-info-share-item"]}>
-												<a href={`https://facebook.com/sharer/sharer.php?u=${siteUrls.siteUrl}/libri/${book.attributes.slug}`} target="_blank" rel="nofollow">
+												<a href={`https://facebook.com/sharer/sharer.php?u=https://claudiopacificoambassador.com/libri/${book.attributes.slug}`} target="_blank" rel="nofollow">
 													<FacebookButtonIcon />
 												</a>
 											</li>
 											<li className={style["book-info-share-item"]}>
-												<a href={`https://twitter.com/intent/tweet/?url=${siteUrls.siteUrl}/libri/${book.attributes.slug}`} target="_blank" rel="nofollow">
+												<a href={`https://twitter.com/intent/tweet/?url=https://claudiopacificoambassador.com/libri/${book.attributes.slug}`} target="_blank" rel="nofollow">
 													<TwitterButtonIcon />
 												</a>
 											</li>
