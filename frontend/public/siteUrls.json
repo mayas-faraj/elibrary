@@ -1,5 +1,5 @@
 {
-	"backendApiUrl": "http://127.0.0.1:1337/graphql",
-	"siteUrl": "http://127.0.0.1:1337"
+	"backendApiUrl": "https://claudiopacificoambassador.com/cms/graphql",
+	"siteUrl": "https://claudiopacificoambassador.com"
 }
 
