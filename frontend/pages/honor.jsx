@@ -16,7 +16,7 @@ const HonorPage = ({ info }) => {
 				<meta property="og:title" content="Claudio Pacifico - Biografia" />
 				<meta name="description" content="Ambasciatore Claudio Pacifico, diplomatico di carriea, scrittore, saggista, docente universitario"/>
 				<meta property="og:description" content="Ambasciatore Claudio Pacifico, diplomatico di carriea, scrittore, saggista, docente universitario"/>
-				<meta property="og:image" content={siteUrls.siteUrl + "/assets/imgs/claudio-pacifico-libya.jpg"} />
+				<meta property="og:image" content={siteUrls.frontendUrl + "/assets/imgs/claudio-pacifico-libya.jpg"} />
 			</Head>
 			<header className={style["about-header"]}>
 				<div className={style["about-header__image-container"]}>

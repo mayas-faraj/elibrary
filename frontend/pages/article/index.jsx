@@ -16,7 +16,7 @@ const ArticlesPage = ({ articles }) => {
 				<meta property="og:title" content="Claudio Pacifico - Letture" />
 				<meta name="description" content="Episodi, ricordi e analisi,scritti dall’ambasciatore d’italia, claudio pacifico"/>
 				<meta property="og:description" content="Episodi, ricordi e analisi,scritti dall’ambasciatore d’italia, claudio pacifico"/>
-				<meta property="og:image" content={siteUrls.siteUrl + "/assets/imgs/header-articles.jpg"} />
+				<meta property="og:image" content={siteUrls.frontendUrl + "/assets/imgs/header-articles.png"} />
 			</Head>
 			<header className={style["articles-header"]}>
 				<div className={style["articles-header__image-container"]}>

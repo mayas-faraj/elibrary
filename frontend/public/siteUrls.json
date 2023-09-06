@@ -1,5 +1,6 @@
 {
 	"backendApiUrl": "https://claudiopacificoambassador.com/cms/graphql",
+	"frontendUrl": "https://claudiopacificoambassador.com",
 	"siteUrl": "https://claudiopacificoambassador.com/cms"
 }
 
